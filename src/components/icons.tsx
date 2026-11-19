@@ -16,7 +16,7 @@ export function Icon({ name, ...props }: SVGProps<SVGSVGElement> & { name: Name 
   return <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>{paths[name]}</svg>;
 }
 
-/** Neutral wordmark occupies exactly the reference logo's 4.6:1 rectangle. */
+/** Neutral wordmark sized to the logo rectangle; text is squeezed to a fixed length. */
 export function Wordmark() {
-  return <svg className="wordmark" viewBox="0 0 115 25" role="img" aria-label="Example"><rect x="1.5" y="3.5" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5"/><path d="M6 8h9v9H6Z" fill="currentColor"/><text x="29" y="20.5" fill="currentColor" fontFamily="Arial, sans-serif" fontSize="23" letterSpacing="-1" textLength="85" lengthAdjust="spacingAndGlyphs">Example</text></svg>;
+  return <svg className="wordmark" viewBox="0 0 162 25" role="img" aria-label="Zen Trading"><rect x="1.5" y="3.5" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5"/><path d="M6 8h9v9H6Z" fill="currentColor"/><text x="29" y="20.5" fill="currentColor" fontFamily="Arial, sans-serif" fontSize="23" letterSpacing="-1" textLength="132" lengthAdjust="spacingAndGlyphs">Zen Trading</text></svg>;
 }

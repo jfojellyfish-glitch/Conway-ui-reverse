@@ -11,7 +11,7 @@ export function Credits() {
       <a className="social-link" href={links.x} target="_blank" rel="noopener noreferrer" aria-label="X (placeholder)"><Icon name="x" /></a>
       <a className="social-link" href={links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (placeholder)"><Icon name="linkedin" /></a>
     </div>
-    <span className="copyright">© 2026 Example</span>
+    <span className="copyright">© 2026 Zen Trading</span>
     <span className="certification flex items-center gap-1.5" title="Placeholder badge, not a certification"><Icon name="shield" width="11" height="11"/>DEMO</span>
   </div>;
 }
@@ -26,7 +26,7 @@ function FooterLinks() {
 
 export function SiteFooter({ compact = false }: { compact?: boolean }) {
   return <footer className={compact ? "site-footer compact-footer page-gutters" : "site-footer full-footer page-gutters"}>
-    {compact ? <div className="footer-row"><Credits/><FooterLinks/></div> : <><div className="footer-brand-row"><Link href="/" aria-label="Example home"><Wordmark/></Link><FooterLinks/></div><Credits/></>}
+    {compact ? <div className="footer-row"><Credits/><FooterLinks/></div> : <><div className="footer-brand-row"><Link href="/" aria-label="Zen Trading home"><Wordmark/></Link><FooterLinks/></div><Credits/></>}
   </footer>;
 }
 
@@ -56,8 +56,8 @@ export function SiteHeader() {
 
   return <>
     <header className="site-header page-gutters flex items-center justify-between" data-scrolled={scrolled}>
-      <Link href="/" className="brand-link" aria-label="Example home"><Wordmark/></Link>
-      <nav className="desktop-nav" aria-label="Main navigation"><Link href="/careers" className="button button-outline careers-button">Careers</Link><a href={links.login} className="button button-dark login-button">Log In</a></nav>
+      <Link href="/" className="brand-link" aria-label="Zen Trading home"><Wordmark/></Link>
+      <nav className="desktop-nav" aria-label="Main navigation"><Link href="/pricing" className="button button-outline">Pricing</Link><Link href="/blog" className="button button-outline">Blog</Link><Link href="/careers" className="button button-outline careers-button">Careers</Link><a href={links.login} className="button button-dark login-button">Log In</a></nav>
       <button className="menu-trigger icon-button" aria-label="Open menu" aria-expanded={open} aria-haspopup="dialog" onClick={() => setOpen(true)}><Icon name="menu" width="16" height="16"/></button>
     </header>
     <dialog ref={dialogRef} className="mobile-menu" aria-label="Navigation" onCancel={event => { event.preventDefault(); setOpen(false); }} onKeyDown={event => {
@@ -71,6 +71,8 @@ export function SiteHeader() {
         <button className="icon-button menu-close" aria-label="Close menu" onClick={() => setOpen(false)}><Icon name="close" width="16" height="16"/></button>
         <nav className="mobile-links" aria-label="Mobile navigation">
           <Link href="/" onClick={() => setOpen(false)}>Home</Link>
+          <Link href="/pricing" onClick={() => setOpen(false)}>Pricing</Link>
+          <Link href="/blog" onClick={() => setOpen(false)}>Blog</Link>
           <Link href="/careers" onClick={() => setOpen(false)}>Careers</Link>
           <a href={links.contact} onClick={() => setOpen(false)}>Contact</a>
           <a href={links.login}>Log In</a>

@@ -4,5 +4,6 @@ export const links = {
   login: "https://example.com/?destination=login",
   trust: "https://example.com/?destination=trust",
   x: "https://example.com/?destination=social-x",
+  github: "https://github.com/zen-tradings",
   linkedin: "https://example.com/?destination=social-linkedin",
 };

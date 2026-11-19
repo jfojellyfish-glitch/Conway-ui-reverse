@@ -9,7 +9,7 @@ export const roles = [
 ];
 
 // Original neutral placeholder descriptions, not real vacancies.
-export const roleIntroduction = "This example position explores the systems that help a team turn early ideas into reliable software. The work connects careful experimentation, practical implementation, and a clear understanding of how people use a product. You would collaborate with colleagues across disciplines, document the choices behind your work, and improve the quality of shared tools. This description is illustrative: Example is a neutral placeholder and this site does not advertise a real job.";
+export const roleIntroduction = "This example position explores the systems that help a team turn early ideas into reliable software. The work connects careful experimentation, practical implementation, and a clear understanding of how people use a product. You would collaborate with colleagues across disciplines, document the choices behind your work, and improve the quality of shared tools. This description is illustrative: Zen Trading is a neutral placeholder brand and this site does not advertise a real job.";
 export const roleSections = [
   { title: "Sample projects include:", items: [
     "Create a reusable development environment that gives different teams a consistent starting point for their own experiments and evaluations",

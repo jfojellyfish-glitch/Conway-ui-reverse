@@ -38,7 +38,7 @@ export function LegalDocument({ type }: { type: "terms" | "privacy" }) {
       <h1>{document.title}</h1><p className="legal-date">Last updated March 22, 2026</p>
       <div className="legal-intro">{document.introduction.map((text, index) => <p key={index}>{text}</p>)}</div>
       {document.sections.map(section => <section className="legal-section" id={sectionId(section.title)} key={section.title}><h3>{section.title}</h3>{section.blocks.map((block, index) => <Block key={index} block={block}/>)}</section>)}
-      <div className="legal-end"><p>Example Organization{type === "terms" && <><br/>Example City, Region</>}<br/>Questions? Contact <a href={links.contact}>team@example.com</a></p></div>
+      <div className="legal-end"><p>Zen Trading{type === "terms" && <><br/>Example City, Region</>}<br/>Questions? Contact <a href={links.contact}>team@example.com</a></p></div>
     </article>
   </div></main>;
 }

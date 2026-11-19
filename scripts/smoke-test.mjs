@@ -43,15 +43,15 @@ try {
     await page.waitForTimeout(2300);
     await page.screenshot({ path: `${directory}/home-${name}.png`, fullPage: true });
     const actual = await page.evaluate(() => ({
-      height: document.documentElement.scrollHeight,
+      height: document.querySelector('.hero').getBoundingClientRect().bottom,
       width: document.documentElement.scrollWidth,
-      elements: [...document.querySelectorAll('main, main h1, main p, canvas, footer')].map(element => ({ tag: element.tagName, bounds: element.getBoundingClientRect().toJSON() })),
+      elements: [...document.querySelectorAll('.hero, .hero h1, .hero p, canvas')].map(element => ({ tag: element.tagName, bounds: element.getBoundingClientRect().toJSON() })),
     }));
-    assert.equal(actual.height, height, `Homepage must remain one viewport at ${width}×${height}`);
+    assert.equal(Math.round(actual.height), height, `Hero must fill exactly the first viewport at ${width}×${height}`);
     assert.equal(actual.width, width, `No horizontal overflow at ${width}×${height}`);
     const expected = reference?.[`home-${name}`];
     if (expected) {
-      const refElements = expected.elements.filter(element => ['MAIN','H1','P','CANVAS','FOOTER'].includes(element.tag));
+      const refElements = expected.elements.filter(element => ['MAIN','H1','P','CANVAS'].includes(element.tag));
       differences[`home-${name}`] = actual.elements.map((element, index) => {
         const ref = refElements[index];
         assert.equal(element.tag, ref.tag);
@@ -83,8 +83,23 @@ try {
   // Homepage controls retain their actual navigation behavior, not invented modals.
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(base, { waitUntil: 'networkidle' });
-  assert.equal(await page.getByRole('link', { name: 'Contact Team', exact: true }).getAttribute('href'), 'mailto:team@example.com');
+  assert.equal(await page.getByRole('link', { name: 'Explore our systems', exact: true }).getAttribute('href'), '#systems');
+  assert.equal(await page.getByRole('link', { name: 'View GitHub', exact: true }).getAttribute('href'), 'https://github.com/zen-tradings');
   assert.match(await page.getByRole('link', { name: 'Log In', exact: true }).getAttribute('href'), /^https:\/\/example.com/);
+  // Systems loop below the hero: tabs switch stages, anchor scrolls to it.
+  await page.getByRole('link', { name: 'Explore our systems', exact: true }).click();
+  await page.waitForTimeout(900);
+  assert(Math.abs((await page.locator('#systems').boundingBox()).y - 72) < 4, 'Systems section clears sticky header');
+  assert.equal(await page.locator('.stage-tools a').count(), 3);
+  await page.getByRole('tab', { name: /Deploy/ }).click();
+  assert.match(await page.getByRole('tabpanel').innerText(), /Deploy strategies/);
+  await page.screenshot({ path: `${directory}/systems-desktop.png`, fullPage: false });
+  // Pipeline flowchart below the loop: 8 nodes, 2 decision gates, revealed on scroll.
+  await page.locator('#pipeline').scrollIntoViewIfNeeded();
+  assert.equal(await page.locator('.flow-node').count(), 8);
+  assert.equal(await page.locator('.flow-decision').count(), 2);
+  await page.waitForFunction(() => getComputedStyle(document.querySelector('.flow-node:last-child')).opacity === '1');
+  await page.screenshot({ path: `${directory}/pipeline-desktop.png`, fullPage: false });
   await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Careers' }).click();
   await page.waitForURL('**/careers');
   assert.equal(await page.locator('.career-card').count(), 7);

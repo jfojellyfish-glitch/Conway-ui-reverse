@@ -1,6 +1,6 @@
 # Neutral frontend reconstruction
 
-Standalone **Next.js, React, and Tailwind CSS** reconstruction. Original implementation; neutral `Example` branding and replacement copy. No copied application source, licensed fonts, proprietary images, or backend.
+Standalone **Next.js, React, and Tailwind CSS** reconstruction. Original implementation; `Zen Trading` placeholder branding and replacement copy. No copied application source, licensed fonts, proprietary images, or backend.
 
 ## Preview
 
