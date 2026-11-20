@@ -8,7 +8,7 @@ import { links } from "@/lib/site";
 export function Credits() {
   return <div className="credits flex flex-wrap items-center">
     <div className="social-links flex items-center gap-2">
-      <a className="social-link" href={links.github} target="_blank" rel="noopener noreferrer" aria-label="Zen Trading GitHub"><Icon name="arrow" /></a>
+      <a className="social-link" href={links.github} target="_blank" rel="noopener noreferrer" aria-label="Zen Trading GitHub"><Icon name="github" width="17" height="17" /></a>
       <a className="social-link" href={links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Zen Trading LinkedIn"><Icon name="linkedin" /></a>
     </div>
     <span className="copyright">© 2026 Zen Trading</span>

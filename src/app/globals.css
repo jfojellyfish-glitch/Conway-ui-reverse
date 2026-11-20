@@ -643,37 +643,71 @@ body.zen-v-a{--paper:#f7f8f7;--surface:#eef3f1;--surface-soft:#e7efeb;--ink:#1c2
 .subscription-unavailable,.subscription-unavailable:disabled{opacity:.45;cursor:not-allowed;pointer-events:none}
 
 
+/* V21 — shared visual system for homepage subscription teasers and detailed pricing cards. */
+.pricing-intro,.plan-grid,.pricing-outro{width:100%;max-width:1080px;margin-left:auto;margin-right:auto}
+.pricing-main{padding-top:84px;padding-bottom:112px}
+.pricing-intro{max-width:1080px}
+.pricing-intro h1{max-width:700px;font-size:clamp(36px,4vw,54px);line-height:1.06;letter-spacing:-.035em}
+.pricing-lede{max-width:560px;margin-top:22px;font-size:15px;line-height:1.6}
+.plan-grid{margin-top:50px;align-items:stretch;gap:20px}
+.plan-card{padding:36px 34px 32px;min-width:0;min-height:620px;background:var(--surface);border-color:var(--line);transition:border-color .2s ease}
+.plan-card:hover{border-color:#aaa6a2}
+.plan-card .eyebrow{font-size:11px;letter-spacing:.12em}
+.plan-card h2{font-size:clamp(22px,2vw,27px);letter-spacing:-.035em;line-height:1.15;margin-top:14px}
+.plan-price{margin-top:20px;display:flex;align-items:baseline;gap:9px}
+.plan-price strong{font-size:clamp(36px,3.5vw,45px);font-weight:400;letter-spacing:-.055em}
+.plan-price .plan-period{font-size:13px;color:var(--muted)}
+.plan-tagline{margin-top:16px;min-height:3.3em;font-size:13px;line-height:1.65}
+.plan-features{gap:12px;margin-top:28px;font-size:13px;line-height:1.55}
+.plan-features li{gap:10px}
+.plan-features li svg{width:13px;height:13px;margin-top:4px}
+.plan-card-bottom{margin-top:auto;padding-top:24px;display:flex;align-items:flex-end;justify-content:space-between;gap:18px;border-top:1px solid var(--soft-line)}
+.plan-card-bottom .stage-tags{margin:0;min-width:0;gap:6px}
+.plan-card-bottom .plan-cta{margin:0;padding:11px 18px;align-self:auto;font-size:13px;flex:none}
+.pricing-outro{max-width:1080px;margin-top:22px;font-size:12px;line-height:1.5}
+.subscribe-strip{padding-block:88px 82px}
+.subscribe-strip h2{font-size:clamp(31px,3.4vw,44px);letter-spacing:-.035em}
+.subscription-subtitle{margin-top:15px;font-size:14px;color:var(--muted);line-height:1.55}
+.subscribe-plans{max-width:1080px;gap:20px;margin-top:34px;align-items:stretch}
+.subscribe-plans .subscription-card{position:relative;display:flex;flex-direction:column;align-items:stretch;gap:32px;padding:28px 30px;min-height:220px;border:1px solid var(--line);background:var(--surface);transition:border-color .2s ease}
+.subscription-card:hover{border-color:#aaa6a2}
+.subscription-card::before{position:absolute;top:-1px;left:-1px;right:-1px;height:2px;content:"";background:var(--line)}
+.subscription-card.is-featured::before{background:var(--accent)}
+.subscription-card-kicker{margin:0!important;font:600 10px/1.5 ui-monospace,monospace!important;text-transform:uppercase;color:var(--accent);letter-spacing:.12em}
+.subscribe-plans .subscription-card h3{margin-top:13px;font-size:22px;font-weight:400;line-height:1.18;letter-spacing:-.03em}
+.subscribe-plans .subscription-card .subscription-card-summary{margin-top:10px;max-width:380px;min-height:2.7em;color:var(--muted);font-size:13px;line-height:1.5}
+.subscription-card-bottom{margin-top:auto;padding-top:18px;border-top:1px solid var(--soft-line);display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.subscription-card-price{display:flex;align-items:baseline;gap:5px;white-space:nowrap}
+.subscription-price-amount{font-size:clamp(27px,2.7vw,34px);font-weight:400;line-height:1;letter-spacing:-.045em}
+.subscription-price-unit{font-size:12px;color:var(--muted)}
+.subscribe-plans .subscription-card .button{padding:11px 16px;font-size:13px;align-self:auto}
+.subscription-footnote{margin-top:20px;font-size:12px;color:var(--muted);line-height:1.5;max-width:1080px}
+.zen-journal-teaser{padding-block:70px 76px}
+.site-footer .social-link svg{width:17px;height:17px}
+.compact-footer .social-link svg{width:15px;height:15px}
+@media(min-width:768px){
+  .plan-grid,.subscribe-plans{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:767px){
+  .pricing-main{padding-top:56px;padding-bottom:70px}
+  .pricing-intro h1{font-size:clamp(33px,8vw,44px)}
+  .plan-grid{margin-top:30px}
+  .plan-card{min-height:unset;padding:28px 22px}
+  .plan-tagline{min-height:0}
+  .plan-card-bottom{margin-top:28px;flex-wrap:wrap}
+  .subscribe-strip{padding-block:62px 60px}
+  .subscribe-plans{margin-top:26px;gap:14px}
+  .subscribe-plans .subscription-card{min-height:0;padding:24px 22px;gap:25px}
+  .subscription-card-bottom{align-items:center}
+  .subscribe-plans .subscription-card .button{padding:10px 13px}
+  .zen-journal-teaser{padding-block:64px}
+}
+@media(max-width:380px){
+  .subscription-card-bottom{flex-wrap:wrap}
+  .subscribe-plans .subscription-card .button{width:100%}
+  .plan-card-bottom{align-items:flex-start;flex-direction:column}
+}
 
-/* V19: Pipeline runs as a restrained, looping walkthrough without altering the Conway layout. */
-.flow-node {
-  transition: opacity 450ms ease-out, transform 450ms ease-out, border-color 280ms ease,
-              background-color 280ms ease, box-shadow 280ms ease;
-  transition-delay: calc(var(--i) * 90ms), calc(var(--i) * 90ms), 0ms, 0ms, 0ms;
-}
-.flow-node[data-active="true"] {
-  border-color: var(--accent);
-  background-color: #f9f8ff;
-  box-shadow: inset 0 0 0 1px rgba(34,0,255,.17), 0 7px 24px rgba(34,0,255,.055);
-}
-.flow-node[data-active="true"] .flow-index {
-  border-color: var(--accent);
-  background-color: var(--accent);
-  color: #fff;
-}
-.flow-node[data-active="true"]::after { background: var(--accent); animation: pipeline-link-glow 1.2s ease-in-out infinite; }
-.flow-node[data-active="true"]::before { border-top-color: var(--accent); }
-.flow-node[data-active="true"] h3 { transition: color 280ms ease; color: var(--accent); }
-.flow[data-cycle-step="3"] .flow-turn::before,
-.flow[data-cycle-step="3"] .flow-turn::after { border-color: var(--accent); }
-.flow[data-cycle-step="3"] .flow-turn i { border-top-color: var(--accent); }
-.flow[data-cycle-step="7"] .flow-return { animation: pipeline-return-glow 1.2s ease-in-out infinite; }
-@keyframes pipeline-link-glow { 0%,100% {opacity:.45} 50% {opacity:1} }
-@keyframes pipeline-return-glow { 0%,100% {opacity:.52} 50% {opacity:1} }
-@media(min-width:1024px) {
-  .flow-node[data-active="true"]::before { border-top-color: transparent; border-left-color: var(--accent); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .flow-node, .flow-node[data-active="true"]::after,
-  .flow[data-cycle-step="7"] .flow-return { animation: none !important; }
-  .flow-node { transition: none !important; }
-}
+/* Ensure subscription amounts override legacy generic span styling. */
+.subscribe-plans .subscription-card-price .subscription-price-amount{font-size:clamp(27px,2.7vw,34px);font-weight:400;line-height:1;letter-spacing:-.045em;color:var(--ink)}
+.subscribe-plans .subscription-card-price .subscription-price-unit{font-size:12px;color:var(--muted)}

@@ -30,11 +30,19 @@ export function Home() {
     <section className="subscribe-strip page-gutters" aria-labelledby="subscribe-title">
       <p className="eyebrow">// Subscriptions</p>
       <h2 id="subscribe-title">Use the agents <span className="text-accent">yourself.</span></h2>
-      <ul className="subscribe-plans">{plans.map(plan => <li key={plan.slug}>
-        <div><h3>{plan.name}</h3><p>{plan.price}</p></div>
-        <a className="button button-dark" href={plan.checkout} target="_blank" rel="noopener noreferrer" aria-label={`Review ${plan.name} subscription on Stripe`}>Subscribe <Icon name="arrow"/></a>
+      <p className="subscription-subtitle">Quant research tools and market intelligence, on your terms.</p>
+      <ul className="subscribe-plans">{plans.map((plan, index) => <li key={plan.slug} className={`subscription-card${plan.featured ? " is-featured" : ""}`}>
+        <div className="subscription-card-main">
+          <p className="subscription-card-kicker">{String(index + 1).padStart(2, "0")} / {plan.eyebrow}</p>
+          <h3>{plan.name}</h3>
+          <p className="subscription-card-summary">{plan.slug === "coding-agent" ? "Agent-assisted quantitative research and code review." : "Source-grounded market briefs delivered to your inbox."}</p>
+        </div>
+        <div className="subscription-card-bottom">
+          <p className="subscription-card-price"><span className="subscription-price-amount">{plan.price.split(" / ")[0]}</span><span className="subscription-price-unit">/ month</span></p>
+          <a className="button button-dark" href={plan.checkout} target="_blank" rel="noopener noreferrer" aria-label={`Review ${plan.name} subscription on Stripe`}>Subscribe <Icon name="arrow"/></a>
+        </div>
       </li>)}</ul>
-      <p className="checkout-note">Both products link to payment pages supplied by Yvette. Newsletter is $9.99/month on this page; verify the product and amount on Stripe before paying. Coding Agent is shown as $49/month; verify the actual Stripe charge before paying.</p>
+      <p className="subscription-footnote">Checkout is hosted by Stripe. Confirm your final billing amount and renewal terms before subscribing.</p>
     </section>
     <JournalTeaser/>
     </main>
