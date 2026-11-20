@@ -100,7 +100,7 @@ Create a **new Render Web Service** for the redesign rather than pointing the pr
 
 Deploy the preview service and inspect **Render build logs**. Once it reports a successful deploy, test the Render preview URL on desktop and mobile. Do not assume a successful source push or typecheck means the deployed site works.
 
-The account has more than one Render workspace; verify the intended workspace with the team **before** creating or changing a service. This repository update does not itself create a Render service, deploy code or alter DNS.
+The account has more than one Render workspace; verify the intended workspace with the team **before** creating or changing a service. This documentation-only commit does not create a Render service or alter DNS. If an existing Render service tracks this branch with auto-deploy enabled, the commit may trigger a rebuild.
 
 ## Payments and external services
 
