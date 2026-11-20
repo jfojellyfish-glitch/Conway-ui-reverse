@@ -1,5 +1,5 @@
-// Placeholder prices and checkout destinations. Replace `checkout` with real
-// payment links (e.g. Stripe Payment Links) when billing is wired up.
+// Prices shown in the Conway UI are illustrative until independently verified.
+// The following official Stripe Payment Links were supplied by Yvette via Slack 2026-11-20.
 export type Plan = {
   slug: string;
   eyebrow: string;
@@ -17,7 +17,7 @@ export const plans: Plan[] = [
     slug: "coding-agent",
     eyebrow: "Research",
     name: "Quant Coding Agent",
-    price: "$99",
+    price: "$49 / month",
     tagline: "zen-coding: a terminal coding agent for quant research. You can audit every paper it reads, backtest it runs, and commit it makes.",
     features: [
       "Papers: search and read full text from alphaXiv, arXiv, and SSRN",
@@ -28,14 +28,14 @@ export const plans: Plan[] = [
       "Metrics: latency, tokens, and cost per session, plus a reproducible eval harness",
     ],
     tags: ["research", "guardrails", "audit trail"],
-    checkout: "https://example.com/?destination=subscribe-coding-agent",
+    checkout: "https://buy.stripe.com/dRmdRb2yP8Ar99Zdmi5c40c", // Payment Link supplied by Yvette on Slack; Stripe product and price MUST be verified before live release.
     featured: true,
   },
   {
     slug: "newsletter-agent",
     eyebrow: "Markets",
-    name: "Market Newsletter Agent",
-    price: "$29",
+    name: "Zen Personal Newsletter",
+    price: "$9.99 / month",
     tagline: "A daily market brief written by an agent from sourced filings, prices, and news — every claim cited.",
     features: [
       "Daily pre-market brief in your inbox",
@@ -45,6 +45,6 @@ export const plans: Plan[] = [
       "Full archive and search",
     ],
     tags: ["daily brief", "sourced", "watchlist"],
-    checkout: "https://example.com/?destination=subscribe-newsletter-agent",
+    checkout: "https://buy.stripe.com/6oU7sNddteYPbi71DA5c40b", // Newsletter payment link supplied by Yvette in Slack. Verify product and amount at checkout.
   },
 ];

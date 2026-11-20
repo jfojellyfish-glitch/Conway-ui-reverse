@@ -1,59 +1,20 @@
-# Neutral frontend reconstruction
+# Zen Trading — Conway-first GSA merge (V3)
 
-Standalone **Next.js, React, and Tailwind CSS** reconstruction. Original implementation; `Zen Trading` placeholder branding and replacement copy. No copied application source, licensed fonts, proprietary images, or backend.
+Conway UI is the layout and new-content baseline. Zen Trading's original brand mark/wordmark, favicon and research journal are retained.
 
-## Preview
+Local: `npm ci && npm run dev` (Node.js 22+). Typecheck: `npm run typecheck`. Production: `npm run build && npm run start`.
 
-Node.js 22 recommended.
+Read [MERGE_NOTES.md](MERGE_NOTES.md) before releasing.
 
-```sh
-cd conway-ui-rebuild
-npm install
-npm run dev
-```
 
-Open **http://localhost:3000**.
+**V12 Newsletter:** click the Newsletter card to choose Standard or Pro; plan checkout buttons are intentionally disabled pending link verification. See CHANGELOG_V12.md.
 
-Production preview:
+**V13 payment safety:** no direct checkout for Coding Agent; Newsletter Standard/Pro chooser is available, but payment remains disabled pending verification. See CHANGELOG_V13.md.
 
-```sh
-npm run build
-npm start
-```
 
-## Pages and behavior
+V14: Standard newsletter is linked to Yvette’s shared Newsletter Payment Link; Pro checkout is disabled pending its own URL. See CHANGELOG_V14.md.
 
-- `/` — original single-viewport header / two-column hero / stacked animated graphics / compact footer hierarchy. At smaller widths, the hero stacks and graphics consume the remaining viewport height.
-- Full-screen mobile menu with the original four navigation items and bottom credits.
-- `/careers` — seven cards, original category order, functional filters, and expanded footer.
-- `/careers/[slug]` — role detail template and application form, with local validation and file selection. Submission only displays a local demo confirmation; nothing is uploaded.
-- `/terms`, `/privacy` — original section order, paragraph/list hierarchy, sticky desktop contents rail, smooth contents scrolling, and mobile document layout. Text is explicitly non-binding placeholder content.
+V16: Coding Agent Subscribe opens Yvette’s shared Stripe link; checkout product/price requires verification before live release. See CHANGELOG_V16.md.
 
-Company-owned external links are replaced with **example.com** destinations. Contact links use **team@example.com**. These are intentional placeholders, not authentication or real contact services. The certification slot contains a dimension-matched **DEMO** label rather than claiming certification.
-
-## Fidelity and verification
-
-The rendered reference was captured at **1440×900** and **390×844**, including navigation and linked pages. Homepage checks also cover **320×568**, **768×1024**, **1024×768**, **1280×720**, and **1920×1080**.
-
-Measured geometry, colors, type scales, breakpoints, gutters, borders, header/footer dimensions, and entrance timings guide the reconstruction. The former invented homepage modals, forecast demo, extra menu links, and visible animation controls have been removed. Keyboard users can still pause animation through a focus-only accessibility control; reduced-motion preferences are respected.
-
-The licensed reference font is replaced with local Arial/Helvetica. The logo retains its measured bounding box using a neutral inline SVG. Two independently generated canvas lattices replace the reference artwork. Neutral copy is sized to preserve the original text block hierarchy; glyph shapes and replacement artwork are intentionally not pixel-identical.
-
-```sh
-npm run typecheck
-npm run build
-npm run inspect:reference  # optional: refresh live reference screenshots/measurements
-npm test
-```
-
-Browser scripts use the development-only `playwright-core` package and an installed Google Chrome. Set `BROWSER_CHANNEL` for another installed browser channel. Tests start and stop their own production server.
-
-Generated inspection artifacts (not part of the app):
-
-- `.artifacts/reference/` — desktop/mobile reference screenshots and rendered measurements.
-- `.artifacts/implementation/` — matching reconstruction screenshots and `structural-differences.json`.
-- `.artifacts/comparison.html` — side-by-side comparison at identical viewport sizes.
-
-Tests verify viewport fit, horizontal overflow, measured homepage/careers geometry, navigation, menu focus and Escape handling, category filters, application validation, legal scrolling, motion preferences, console errors, and the absence of third-party requests. The geometric comparison runs when reference measurements are available.
-
-All changes are contained in this directory. Runtime dependencies are only Next.js, React, and React DOM.
+## V17 Newsletter update
+The Newsletter is now a single $9.99/month card with direct Subscribe link (no tier selector). See `CHANGELOG_V17.md` for details. Check actual Stripe checkout price before deployment.

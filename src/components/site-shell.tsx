@@ -8,11 +8,11 @@ import { links } from "@/lib/site";
 export function Credits() {
   return <div className="credits flex flex-wrap items-center">
     <div className="social-links flex items-center gap-2">
-      <a className="social-link" href={links.x} target="_blank" rel="noopener noreferrer" aria-label="X (placeholder)"><Icon name="x" /></a>
-      <a className="social-link" href={links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (placeholder)"><Icon name="linkedin" /></a>
+      <a className="social-link" href={links.github} target="_blank" rel="noopener noreferrer" aria-label="Zen Trading GitHub"><Icon name="arrow" /></a>
+      <a className="social-link" href={links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Zen Trading LinkedIn"><Icon name="linkedin" /></a>
     </div>
     <span className="copyright">© 2026 Zen Trading</span>
-    <span className="certification flex items-center gap-1.5" title="Placeholder badge, not a certification"><Icon name="shield" width="11" height="11"/>DEMO</span>
+    <span className="gsa-footer-caption">Research · Verify · Deploy</span>
   </div>;
 }
 
@@ -20,7 +20,7 @@ function FooterLinks() {
   return <nav className="footer-links" aria-label="Footer navigation"><ul className="flex flex-wrap items-center justify-center">
     <li><Link href="/terms">Terms of Service</Link></li>
     <li><Link href="/privacy">Privacy Policy</Link></li>
-    <li><a href={links.trust} target="_blank" rel="noopener noreferrer">Trust Center</a></li>
+    <li><a href={links.docs} target="_blank" rel="noopener noreferrer">Docs</a></li>
   </ul></nav>;
 }
 
@@ -57,7 +57,7 @@ export function SiteHeader() {
   return <>
     <header className="site-header page-gutters flex items-center justify-between" data-scrolled={scrolled}>
       <Link href="/" className="brand-link" aria-label="Zen Trading home"><Wordmark/></Link>
-      <nav className="desktop-nav" aria-label="Main navigation"><Link href="/pricing" className="button button-outline">Pricing</Link><Link href="/blog" className="button button-outline">Blog</Link><Link href="/careers" className="button button-outline careers-button">Careers</Link><a href={links.login} className="button button-dark login-button">Log In</a></nav>
+      <nav className="desktop-nav" aria-label="Main navigation"><a href="/#systems" className="button button-outline">Systems</a><Link href="/pricing" className="button button-outline">Agents</Link><Link href="/blog" className="button button-outline">Blog</Link><Link href="/careers" className="button button-outline careers-button">Careers</Link><a href={links.login} className="button button-dark login-button">Log In</a></nav>
       <button className="menu-trigger icon-button" aria-label="Open menu" aria-expanded={open} aria-haspopup="dialog" onClick={() => setOpen(true)}><Icon name="menu" width="16" height="16"/></button>
     </header>
     <dialog ref={dialogRef} className="mobile-menu" aria-label="Navigation" onCancel={event => { event.preventDefault(); setOpen(false); }} onKeyDown={event => {
@@ -71,7 +71,8 @@ export function SiteHeader() {
         <button className="icon-button menu-close" aria-label="Close menu" onClick={() => setOpen(false)}><Icon name="close" width="16" height="16"/></button>
         <nav className="mobile-links" aria-label="Mobile navigation">
           <Link href="/" onClick={() => setOpen(false)}>Home</Link>
-          <Link href="/pricing" onClick={() => setOpen(false)}>Pricing</Link>
+          <a href="/#systems" onClick={() => setOpen(false)}>Systems</a>
+          <Link href="/pricing" onClick={() => setOpen(false)}>Agents</Link>
           <Link href="/blog" onClick={() => setOpen(false)}>Blog</Link>
           <Link href="/careers" onClick={() => setOpen(false)}>Careers</Link>
           <a href={links.contact} onClick={() => setOpen(false)}>Contact</a>

@@ -351,3 +351,329 @@ html:has(.home-shell) { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+/* Zen Trading × Conway: integration skin. Original Conway CSS preserved above. */
+:root { --gutter: 28px; }
+.zen-brand{display:inline-flex;align-items:center;gap:9px;white-space:nowrap;color:var(--ink)}
+.zen-brand-mark{position:relative;display:inline-flex;width:36px;height:28px;align-items:center}
+.zen-brand-mark img{position:absolute;left:0;top:0;width:36px;height:27px;object-fit:contain;object-position:left center}
+.zen-brand .zen-mark-light{display:none}
+.zen-brand-type{font-family:Arial,Helvetica,sans-serif;font-size:16px;letter-spacing:.085em;font-weight:700;line-height:1}
+.zen-brand-type span{font-weight:400;letter-spacing:.06em}
+.site-header .brand-link,.footer-brand-row>a{display:inline-flex;align-items:center}
+.zen-products,.zen-journal-teaser,.zen-proof{position:relative}
+.zen-proof{display:flex;justify-content:center;align-items:center;gap:clamp(12px,3vw,54px);padding-block:25px;border-top:1px solid var(--soft-line);border-bottom:1px solid var(--soft-line);background:var(--surface);font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.085em;text-transform:uppercase}
+.zen-proof strong{color:var(--accent);font-size:11px;margin-right:6px}.zen-proof i{display:block;height:1px;width:clamp(12px,5vw,72px);background:var(--line)}
+.zen-products{padding-block:105px 120px;background:var(--paper);scroll-margin-top:80px;border-top:1px solid var(--soft-line)}
+.zen-section-top{display:flex;justify-content:space-between;align-items:end;gap:42px;margin-bottom:42px}
+.zen-section-top h2{margin-top:16px;font-size:clamp(30px,3.8vw,52px);font-weight:400;line-height:1.09;max-width:700px;letter-spacing:-.035em}
+.zen-section-top>p{max-width:280px;color:var(--muted);font-size:14px;line-height:1.7}
+.zen-products-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.zen-product-card{border:1px solid var(--line);display:flex;flex-direction:column;min-height:470px;padding:25px;transition:background .3s,transform .3s,border-color .3s}
+.zen-product-card:hover{transform:translateY(-4px);border-color:var(--accent);background:var(--surface)}
+.zen-product-top{display:flex;justify-content:space-between;font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.13em;color:var(--accent)}
+.zen-product-graphic{position:relative;overflow:hidden;height:110px;margin:23px 0 12px;border-bottom:1px solid var(--soft-line);background:radial-gradient(ellipse at 50% 110%,var(--accent-wash),transparent 68%)}
+.zen-product-graphic span{position:absolute;display:block;left:50%;top:30%;width:75px;height:75px;border:1px solid var(--accent);transform:translate(-50%,-50%) rotate(45deg);opacity:.25}
+.zen-product-graphic span:nth-child(2){width:55px;height:55px;transform:translate(-50%,-50%) rotate(20deg);opacity:.45}
+.zen-product-graphic span:nth-child(3){width:35px;height:35px;opacity:.65}
+.zen-product-graphic span:nth-child(4){width:10px;height:10px;background:var(--accent);opacity:.7}
+.zen-product-1 .zen-product-graphic span{border-radius:100%;transform:translate(-50%,-50%)}
+.zen-product-2 .zen-product-graphic span{width:3px;height:70px;transform:translate(-50%,-50%) rotate(45deg);box-shadow:25px 0 var(--accent),-25px 0 var(--accent)}
+.zen-product-card h3{font-size:24px;line-height:1.13;font-weight:400;letter-spacing:-.02em;max-width:275px}
+.zen-product-subtitle{font-size:12px;color:var(--accent);margin-top:12px}
+.zen-product-desc{font-size:13px;line-height:1.7;color:var(--muted);margin-top:15px}
+.zen-product-card ul{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px}
+.zen-product-card li{font-size:10px;color:var(--muted);border:1px solid var(--soft-line);padding:5px 7px}
+.zen-product-link{margin-top:auto;padding-top:30px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--accent)}
+.zen-journal-teaser{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-block:92px;border-top:1px solid var(--soft-line);background:var(--surface)}
+.zen-journal-teaser h2{font-size:clamp(28px,3.2vw,44px);font-weight:400;letter-spacing:-.03em;line-height:1.14;margin-top:12px}
+.zen-journal-teaser h2 em{font-style:normal;color:var(--accent)}
+.zen-journal-teaser p{font-size:14px;color:var(--muted);margin-top:13px}
+.journal,.journal-article{flex:1;padding-top:100px;padding-bottom:130px}
+.journal-heading{max-width:850px;margin-bottom:55px}.journal-heading h1{font-size:clamp(38px,5vw,72px);font-weight:400;letter-spacing:-.045em;line-height:1.1;margin:20px 0}.journal-heading>p{font-size:15px;color:var(--muted);max-width:560px}
+.journal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.journal-card{display:flex;flex-direction:column;border:1px solid var(--line);min-height:330px;padding:34px;transition:transform .2s,background .2s}
+.journal-card:hover{transform:translateY(-3px);background:var(--surface)}
+.journal-num{font-size:11px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-family:ui-monospace,monospace}
+.journal-card h2{font-size:clamp(21px,2vw,30px);font-weight:400;line-height:1.15;margin:22px 0 16px}
+.journal-card p{font-size:13px;color:var(--muted);line-height:1.7}
+.journal-bottom{display:flex;justify-content:space-between;gap:12px;margin-top:auto;padding-top:26px;font-size:11px;color:var(--faint)}.journal-bottom span:last-child{color:var(--accent)}
+.journal-article{max-width:1050px;margin:auto}.journal-back{font-size:12px;color:var(--accent);display:inline-block;margin-bottom:55px}
+.journal-article h1{font-size:clamp(36px,5vw,67px);letter-spacing:-.04em;line-height:1.08;font-weight:400;margin-top:24px}
+.journal-abstract{font-size:18px;line-height:1.6;color:var(--muted);margin:25px 0 65px}
+.journal-prose{max-width:770px;line-height:1.85;font-size:15px}.journal-prose section+section{border-top:1px solid var(--soft-line);padding-top:32px;margin-top:32px}
+.journal-prose h2{font-size:25px;margin-bottom:18px;font-weight:400}.journal-prose p{margin-bottom:20px;color:var(--muted)}
+.zen-terminal{display:flex;flex-direction:column;border:1px solid rgba(172,214,235,.26);background:rgba(4,14,30,.83);color:#d6edff;min-height:280px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;box-shadow:0 25px 70px rgba(2,10,25,.21)}
+.zen-terminal-title{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(172,214,235,.15);padding:14px 17px;font-size:9px;letter-spacing:.12em}
+.zen-terminal-title>span{display:flex;gap:5px}.zen-terminal-title i{width:6px;height:6px;border-radius:50%;background:#6d8c9d}.zen-terminal-title i:nth-child(2){opacity:.5}.zen-terminal-title i:nth-child(3){opacity:.25}
+.zen-terminal-title small{font-size:9px;color:#80aaa9}.zen-terminal-body{padding:29px 24px;flex:1;font-size:11px;line-height:2.3}.zen-terminal-body>div{display:flex;gap:12px}.zen-terminal-body b{color:#6dd5bf}.zen-terminal-body .term-prompt b{color:#8dc5e8}.zen-terminal-body .term-progress b{color:#d0a9c6}.term-cursor{animation:blink 1.1s steps(2) infinite;color:#80cec0;margin-top:4px}
+.zen-terminal-bottom{display:flex;justify-content:space-between;align-items:center;padding:12px 17px;border-top:1px solid rgba(172,214,235,.15);font-size:9px;color:#7995a5}.zen-terminal-bottom button{color:#93d6c8;text-decoration:underline;text-underline-offset:4px}
+@keyframes blink{50%{opacity:0}}
+@media(max-width:1050px){.zen-products-grid{grid-template-columns:repeat(2,1fr)}.zen-product-2{grid-column:span 2}.zen-product-2 .zen-product-graphic{height:75px}}
+@media(max-width:700px){.zen-proof{gap:8px;padding-inline:13px;font-size:9px}.zen-proof i{width:8px}.zen-proof strong{display:none}.zen-section-top,.zen-journal-teaser{flex-direction:column;align-items:start}.zen-products{padding-block:70px}.zen-products-grid,.journal-grid{grid-template-columns:1fr}.zen-product-2{grid-column:auto}.zen-product-card{min-height:410px}.journal,.journal-article{padding-top:75px}.journal-card{min-height:280px;padding:25px}}
+
+.site-header .zen-nav-link{font-size:12px;margin:0 10px;color:var(--muted);white-space:nowrap}
+.site-header .zen-nav-link:hover{color:var(--accent)}
+.zen-footer-note{font-size:10px}
+@media (min-width:1024px){.site-header{padding-inline:clamp(45px,6vw,110px)}.zen-brand-mark img{width:38px}.zen-brand-type{font-size:17px}}
+@media (min-width:1280px){.site-header .zen-nav-link{margin:0 11px}}
+@media (min-width:768px) and (max-width:1160px){.site-header .zen-nav-link{margin:0 5px}.site-header .desktop-nav{gap:2px}.site-header .button{padding-inline:8px}}
+
+body.zen-v-a{--paper:#f7f8f7;--surface:#eef3f1;--surface-soft:#e7efeb;--ink:#1c2932;--muted:#5e6e73;--faint:#7b8a90;--dim:#a1adb0;--line:#c3d0d0;--soft-line:#e0e8e8;--accent:#188e87;--accent-2:#188e87;--accent-wash:#d6efea;color:var(--ink);background:var(--paper)}
+.zen-v-a .site-header{background:rgba(247,248,247,.94);backdrop-filter:blur(14px)}
+.zen-v-a .zen-hero-a{background:linear-gradient(145deg,#f7f8f7,#f2f7f6)}
+.zen-v-a .zen-hero-a h1{font-size:clamp(38px,4.8vw,76px);max-width:670px;line-height:1.03;letter-spacing:-.055em;font-weight:400}
+.zen-v-a .zen-hero-a .hero-description{font-size:15px;line-height:1.8;margin-top:24px;color:#667c7f}
+.zen-v-a .zen-hero-kicker{margin-bottom:34px}
+.zen-v-a .button-primary{color:#fff;background:#177d78;border-color:#177d78}
+.zen-v-a .button-dark{color:#fff}
+.zen-v-a .zen-hero-footnote{display:flex;align-items:center;gap:8px;margin-top:60px;font-size:10px;letter-spacing:.12em;color:#7d9993;font-family:ui-monospace,monospace}
+.zen-v-a .zen-live-indicator{width:7px;height:7px;border-radius:50%;background:#2ba99b;box-shadow:0 0 0 4px #d8ede8}
+.zen-v-a .zen-art-frame{height:min(520px,65vh);min-width:0;display:flex;flex-direction:column}
+.zen-v-a .zen-art-label,.zen-v-a .zen-art-caption{display:flex;justify-content:space-between;font-size:10px;font-family:ui-monospace,monospace;letter-spacing:.14em;color:#6d9992;padding:14px 0}
+.zen-v-a .zen-art-frame .signal-field{flex:1;max-height:none}
+.zen-v-a .signal-panel{background:linear-gradient(110deg,#f1f7f4,#e4eeeb)}
+.zen-v-a .zen-art-frame .signal-field{border:1px solid #a9c4c0}
+.zen-v-a .zen-art-frame .signal-panel:first-child{border-bottom:1px solid #b4c9c5}
+.zen-v-a .systems{background:#f7f8f7}
+.zen-v-a .pipeline{background:#eef3f1}
+.zen-v-a .stage-card,.zen-v-a .flow-node{background:#fff}
+.zen-v-a .subscribe-strip{display:none}
+@media(max-width:1023px){.zen-v-a .zen-hero-a{padding-top:56px;gap:20px}.zen-v-a .zen-art-frame{height:390px}.zen-v-a .home-main>.hero{height:auto;min-height:calc(100dvh - 72px)}.zen-v-a .zen-hero-footnote{margin-top:28px}}
+@media(max-width:700px){.zen-v-a .zen-hero-a h1{font-size:45px}.zen-v-a .zen-art-frame{height:290px}.zen-v-a .zen-hero-kicker{margin-bottom:18px}}
+
+/* V2: ground Conway design in live Zen Trading positioning and subscriptions. */
+.zen-approach,.zen-team,.zen-invest{scroll-margin-top:88px;position:relative}
+.zen-approach{padding-block:100px 108px;background:var(--surface);border-top:1px solid var(--soft-line)}
+.zen-approach-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:7vw;align-items:start}
+.zen-approach-statement{padding:32px 35px;border:1px solid var(--line);background:var(--paper);min-height:315px;display:flex;flex-direction:column;justify-content:space-between}
+.zen-mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent)}
+.zen-approach-statement>p{font-size:clamp(22px,2.15vw,31px);line-height:1.3;letter-spacing:-.035em;margin:24px 0 28px}
+.zen-evidence-line{font-size:11px;color:var(--muted);font-family:ui-monospace,Menlo,monospace;display:flex;align-items:center;gap:8px}
+.zen-evidence-line span{width:7px;height:7px;background:var(--accent);border-radius:50%}
+.zen-approach-steps{border-top:1px solid var(--line)}
+.zen-approach-steps article{display:grid;grid-template-columns:35px 1fr;gap:16px;padding:23px 0;border-bottom:1px solid var(--line)}
+.zen-approach-steps article>span{font:11px ui-monospace,Menlo,monospace;color:var(--accent)}
+.zen-approach-steps h3{font-size:19px;font-weight:400;letter-spacing:-.015em}
+.zen-approach-steps p{font-size:13px;line-height:1.65;color:var(--muted);margin-top:8px;max-width:390px}
+.zen-offerings-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.zen-offerings-grid .zen-product-card{min-height:560px;padding:34px}
+.zen-offerings-grid .zen-product-graphic{height:120px}
+.zen-offerings-grid .zen-product-desc{max-width:480px}
+.zen-offerings-grid .zen-feature-list{display:flex;flex-direction:column;gap:11px;margin-top:25px;margin-bottom:22px}
+.zen-offerings-grid .zen-feature-list li{border:0;padding:0;display:flex;gap:10px;font-size:12px;line-height:1.5;color:var(--muted)}
+.zen-offerings-grid .zen-feature-list li::before{content:'';display:inline-block;width:7px;height:7px;margin-top:6px;border-top:1px solid var(--accent);border-right:1px solid var(--accent);transform:rotate(45deg);flex:none}
+.zen-offering-bottom{margin-top:auto;border-top:1px solid var(--soft-line);padding-top:21px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.zen-price strong{font-size:29px;font-weight:400;letter-spacing:-.035em}
+.zen-price span{font-size:12px;color:var(--muted)}
+.zen-offering-cta{white-space:nowrap;font-size:12px;min-height:42px}
+.zen-open-source{border:1px solid var(--line);margin-top:16px;padding:28px 34px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--surface)}
+.zen-open-source strong{display:block;font-size:20px;font-weight:400;margin:7px 0 8px;letter-spacing:-.025em}
+.zen-open-source p{color:var(--muted);font-size:12px;line-height:1.6}
+.zen-source-note{font-size:10px;line-height:1.55;margin-top:15px;color:var(--faint)}
+.zen-team{padding-block:104px 108px;background:var(--paper)}
+.zen-values-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.zen-values-grid article{padding:29px 27px;border:1px solid var(--line);min-height:220px;display:flex;flex-direction:column;background:var(--surface)}
+.zen-values-grid h3{font-size:22px;font-weight:400;margin:23px 0 14px;letter-spacing:-.025em}
+.zen-values-grid p{font-size:13px;line-height:1.7;color:var(--muted)}
+.zen-invest{padding-block:95px;background:#0b2032;color:#e8f5f6;overflow:hidden}
+.zen-invest:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 79% 48%,rgba(38,133,155,.24),transparent 40%);pointer-events:none}
+.zen-invest-grid{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:7vw;align-items:center}
+.zen-invest h2{font-size:clamp(29px,3.7vw,53px);font-weight:400;line-height:1.1;letter-spacing:-.04em;margin:16px 0 18px}
+.zen-invest h2 span{color:#92d8d3}
+.zen-invest p:not(.eyebrow){font-size:14px;color:#bad0d8;line-height:1.7;max-width:510px}
+.zen-invest .button-primary{margin-top:26px;background:#85d5c7;color:#102b39;border:1px solid #85d5c7}
+.zen-invest small{display:block;font-size:10px;color:#8eaab6;line-height:1.6;margin-top:27px;max-width:520px}
+.zen-invest-lines{border-top:1px solid rgba(181,217,227,.3)}
+.zen-invest-lines p{border-bottom:1px solid rgba(181,217,227,.3);padding:23px 0;display:flex;align-items:center;gap:20px}
+.zen-invest-lines span{font:10px ui-monospace,Menlo,monospace;color:#8bd7cf}
+.plan-live-features{display:flex;flex-direction:column;gap:14px;margin:26px 0 30px}
+.plan-live-features li{display:flex;gap:9px;font-size:13px;line-height:1.55;color:var(--muted)}
+.plan-live-features li>span{color:var(--accent);font-size:12px}
+.home-main > .zen-hero-a h1,.home-main > .zen-hero-b h1{font-size:clamp(38px,4.4vw,66px);line-height:1.075}
+.home-main > .zen-hero-a .hero-description,.home-main > .zen-hero-b .hero-description{max-width:495px}
+@media(min-width:1024px){.home-main > .zen-hero-a,.home-main > .zen-hero-b{gap:42px}.zen-offerings-grid .zen-product-card{min-height:580px}}
+@media(max-width:1050px){.zen-offerings-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.zen-offerings-grid .zen-product-card{min-height:650px}}
+@media(max-width:760px){.zen-approach,.zen-team{padding-block:68px 74px}.zen-approach-grid,.zen-invest-grid{grid-template-columns:1fr;gap:24px}.zen-offerings-grid,.zen-values-grid{grid-template-columns:1fr}.zen-offerings-grid .zen-product-card{min-height:0}.zen-offering-bottom{flex-wrap:wrap}.zen-offering-cta{width:100%;justify-content:center}.zen-open-source{flex-direction:column;align-items:flex-start;padding:24px}.zen-invest{padding-block:72px}.zen-invest-lines{margin-top:20px}.zen-approach-statement{min-height:240px}.zen-team .zen-values-grid article{min-height:0}.zen-approach-statement{padding:26px}}
+@media(max-width:420px){.home-main > .zen-hero-a h1,.home-main > .zen-hero-b h1{font-size:37px}.zen-offerings-grid .zen-product-card{padding:25px}.zen-approach-statement>p{font-size:22px}}
+
+/* V3: Preserve the original GSA mark and wordmark (never recreate it in SVG). */
+.gsa-wordmark{display:inline-flex;align-items:center;gap:9px;white-space:nowrap;color:var(--ink);font-family:"Space Grotesk",Arial,sans-serif;font-size:20px;font-weight:600;line-height:1;letter-spacing:-.01em}
+.gsa-wordmark-icon{display:inline-flex;width:52px;height:34px;align-items:center;flex-shrink:0}
+.gsa-wordmark-icon img{display:block;width:52px;height:34px;object-fit:contain}
+.gsa-wordmark-text>span{color:#3c9c91}
+.full-footer .gsa-wordmark{font-size:24px}
+.full-footer .gsa-wordmark-icon,.full-footer .gsa-wordmark-icon img{width:59px;height:39px}
+.gsa-footer-caption{font-size:10px;color:var(--muted);letter-spacing:.03em}
+.gsa-hero-eyebrow{font-size:10px;letter-spacing:.13em;color:var(--accent);font-family:ui-monospace,Menlo,monospace;margin-bottom:23px}
+.home-main .zen-products{border-top:1px solid var(--soft-line)}
+.home-main .zen-products .zen-section-top{margin-bottom:36px}
+.zen-offerings-grid .zen-product-card{display:flex;flex-direction:column}
+.zen-offerings-grid .zen-product-card .zen-product-desc{flex:0 0 auto}
+.zen-offerings-grid .zen-product-card .zen-feature-list{flex:1}
+@media(max-width:480px){.gsa-wordmark{font-size:18px;gap:7px}.gsa-wordmark-icon,.gsa-wordmark-icon img{width:45px;height:30px}}
+
+/* Faithful variant: keep Conway pale editorial palette and blue accents intact. */
+.gsa-wordmark-text>span{color:#3c9c91}
+
+
+/* P1 Zen OS demo replaces only the P2 hero artwork. Drawn entirely in CSS/HTML. */
+.zen-os-visual{
+  position:relative;isolation:isolate;display:grid;place-items:center;overflow:hidden;
+  margin:0;min-width:0;width:100%;height:min(620px,74vh);min-height:410px;
+  border:0;border-radius:0;
+  background:transparent;
+}
+
+.zen-os-window{
+  width:min(91%,570px);height:min(84%,510px);min-height:365px;position:relative;
+  border-radius:8px;overflow:hidden;background:rgba(231,233,239,.92);
+  box-shadow:0 14px 58px rgba(56,46,74,.11);color:#4c455c;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+}
+.zen-os-titlebar{
+  height:56px;display:flex;align-items:center;justify-content:center;gap:11px;
+  background:rgba(249,249,252,.9);font-size:17px;line-height:1;letter-spacing:-.045em;
+}
+.zen-os-title-soft,.zen-os-muted,.zen-os-tree{color:#918aa4}
+.zen-os-title-soft{font-size:15px}
+.zen-os-body{padding:28px 24px 62px;font-size:clamp(12px,1.12vw,17px);line-height:1.5;overflow-wrap:anywhere}
+.zen-os-location{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px}
+.zen-os-asterisk{color:#299e99;font-size:19px;font-weight:700;line-height:1}
+.zen-os-location strong,.zen-os-line b{font-weight:700}
+.zen-os-dot{color:#9d96ad;margin-inline:0 2px}
+.zen-os-command{display:flex;align-items:baseline;gap:13px;margin-top:30px;max-width:100%}
+.zen-os-prompt{color:#2faca8;flex:none}
+.zen-os-log{margin-top:30px}
+.zen-os-reading{display:flex;align-items:center;gap:12px}
+.zen-os-spinner{display:inline-block;font-size:14px;animation:zen-os-pulse 2.5s ease-in-out infinite}
+.zen-os-line{display:flex;align-items:baseline;gap:13px}
+.zen-os-success{width:9px;height:9px;background:#369766;border-radius:50%;flex:none}
+.zen-os-tree{margin-left:23px}
+.zen-os-grep{margin-top:25px}
+.zen-os-running{opacity:.95}
+.zen-os-ellipses{animation:zen-os-pulse 1.3s ease-in-out infinite}
+.zen-os-expand{position:absolute;right:15px;bottom:13px;width:24px;height:24px;padding:3px;
+  display:grid;place-items:center;border:0;background:transparent;color:#938da4;cursor:pointer;
+  transition:color .2s ease,transform .2s ease}
+.zen-os-expand svg{width:100%;height:100%}
+.zen-os-expand:hover{color:#4c455c;transform:scale(1.12)}
+.zen-os-expand:focus-visible{outline:2px solid #319995;outline-offset:2px}
+.zen-os-visual.is-expanded{position:fixed;z-index:90;inset:0;width:100vw;height:100dvh;min-height:0; background:var(--paper,#f7f6f5);
+  border:0;border-radius:0;animation:zen-os-expand-in .2s ease-out}
+.zen-os-visual.is-expanded .zen-os-window{width:min(91vw,640px);height:min(78vh,600px)}
+.zen-os-visual.is-expanded .zen-os-body{font-size:clamp(14px,1.3vw,19px)}
+@keyframes zen-os-pulse{50%{opacity:.4}}
+@keyframes zen-os-expand-in{from{opacity:.6}to{opacity:1}}
+@media(max-width:1023px){.hero .zen-os-visual{height:440px;min-height:0}.zen-os-window{height:84%}}
+@media(max-width:650px){.hero .zen-os-visual{height:400px}.zen-os-window{width:92%;height:88%;min-height:0}
+ .zen-os-titlebar{height:43px;font-size:13px}.zen-os-title-soft{font-size:12px}
+ .zen-os-body{padding:20px 15px 48px;font-size:11px}.zen-os-command{margin-top:22px;gap:8px}
+ .zen-os-log{margin-top:22px}.zen-os-grep{margin-top:20px}.zen-os-location{gap:6px}.zen-os-tree{margin-left:17px}
+ }
+@media(prefers-reduced-motion:reduce){.zen-os-spinner,.zen-os-ellipses{animation:none!important}}
+
+/* V5: Restore the original GSA animated terminal output (all three scripts, typing, tools and code diffs). */
+.zen-os-window{display:flex;flex-direction:column}
+.zen-os-titlebar{flex:0 0 56px}
+.zen-os-output{display:block;flex:1;min-height:0;margin:0;padding:25px 22px 47px;
+  overflow:auto;overscroll-behavior:contain;white-space:pre-wrap;overflow-wrap:anywhere;
+  font-size:clamp(12px,1.06vw,16px);line-height:1.55;scrollbar-width:thin;scrollbar-color:#aaa5b7 transparent}
+.zen-os-output .t-accent,.zen-os-output .t-spin{color:#2b9e99}
+.zen-os-output .t-strong,.zen-os-output .t-tool{font-weight:700;color:#504858}
+.zen-os-output .t-dim,.zen-os-output .t-arg{color:#8f88a3}
+.zen-os-output .t-user{color:#504858}
+.zen-os-output .t-ok,.zen-os-output .t-add{color:#379669}
+.zen-os-output .t-del{color:#b25471}
+.zen-terminal-caret{display:inline-block;width:8px;height:1.2em;vertical-align:-.23em;background:rgba(43,158,153,.55);animation:zen-caret-blink .85s steps(1,end) infinite}
+@keyframes zen-caret-blink{50%{opacity:0}}
+.zen-os-expand{z-index:2;background:rgba(231,233,239,.80);border-radius:3px}
+.zen-os-visual.is-expanded{z-index:999}
+.zen-os-visual.is-expanded .zen-os-window{min-height:0}
+.zen-os-visual.is-expanded .zen-os-output{font-size:clamp(13px,1.4vw,18px)}
+@media(max-width:650px){.zen-os-titlebar{flex-basis:43px}.zen-os-output{padding:18px 13px 42px;font-size:11px;line-height:1.5}}
+@media(prefers-reduced-motion:reduce){.zen-terminal-caret{animation:none}}
+
+/* Visually hide accessibility-only caption in both app and standalone preview. */
+.zen-os-visual > figcaption.sr-only {position:absolute !important; width:1px !important; height:1px !important; padding:0 !important; margin:-1px !important; overflow:hidden !important; clip:rect(0,0,0,0) !important; white-space:nowrap !important; border:0 !important}
+
+/* V6 — Restore Conway's exact palette for its original sections (not a new redesign). */
+#systems,#pipeline,.subscribe-strip {
+ --paper:#f7f6f5;--surface:#f3f2f1;--surface-soft:#f3f2f1;--ink:#171410;
+ --muted:rgba(23,20,16,.66);--faint:rgba(23,20,16,.55);--dim:rgba(23,20,16,.4);
+ --line:#b7b6b5;--soft-line:#e7e7e6;--accent:#2200ff;--accent-2:#2200ff;
+ background:var(--paper);color:var(--ink);
+}
+.zen-v-a .subscribe-strip{display:block}
+.zen-v-a #pipeline{background:#f7f6f5}
+#pipeline .flow-node{background:#f3f2f1}
+#pipeline .flow-decision{border-color:#2200ff}
+
+/* V9: SVG blog links instead of Unicode emoji-like arrows. */
+.journal-bottom svg{display:inline-block;vertical-align:-2px;margin-left:4px}
+
+
+/* V10: Research stages: static desktop; touch-scroll + gentle auto-pan only on mobile. */
+.process-strip{position:relative;display:flex;align-items:center;gap:28px;padding:22px var(--gutter);border-top:1px solid var(--soft-line);border-bottom:1px solid var(--soft-line);color:var(--muted);min-width:0}
+.process-strip-track{min-width:0;flex:0 1 auto;overflow:visible;outline-offset:4px}
+.process-strip-list{display:flex;align-items:center;gap:26px;list-style:none;padding:0;margin:0;white-space:nowrap}
+.process-strip-item{display:inline-flex;align-items:baseline;gap:10px;font-size:13px;letter-spacing:.065em;white-space:nowrap}
+.process-strip-item strong{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.08em}
+
+.process-strip-progress{display:none}
+@media(max-width:760px){
+  .process-strip{display:block;padding:16px 0 12px;overflow:hidden}
+  .process-strip-track{display:block;width:100%;padding:0 22px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x;scrollbar-width:none}
+  .process-strip-track::-webkit-scrollbar{display:none}
+  .process-strip-list{width:max-content;gap:28px;padding-right:22px}
+  .process-strip-item{font-size:15px;gap:9px}
+  .process-strip-item strong{font-size:16px}
+  
+  .process-strip-progress{display:block;position:relative;width:calc(100% - 44px);height:3px;margin:16px 22px 0;background:#ddd9d7;overflow:hidden;border-radius:3px}
+  .process-strip-thumb{position:absolute;left:0;top:0;height:100%;background:var(--accent);border-radius:3px;transition:left 45ms linear}
+}
+@media(prefers-reduced-motion:reduce){.process-strip-thumb{transition:none}}
+
+/* V11: clarify checkout pricing without altering the original subscription layout. */
+.checkout-note{margin-top:12px;font-size:12px;color:var(--muted);line-height:1.45}
+
+
+
+/* V13: maintain the card footprint but remove unverified Coding Agent checkout. */
+.subscription-unavailable,.subscription-unavailable:disabled{opacity:.45;cursor:not-allowed;pointer-events:none}
+
+
+
+/* V19: Pipeline runs as a restrained, looping walkthrough without altering the Conway layout. */
+.flow-node {
+  transition: opacity 450ms ease-out, transform 450ms ease-out, border-color 280ms ease,
+              background-color 280ms ease, box-shadow 280ms ease;
+  transition-delay: calc(var(--i) * 90ms), calc(var(--i) * 90ms), 0ms, 0ms, 0ms;
+}
+.flow-node[data-active="true"] {
+  border-color: var(--accent);
+  background-color: #f9f8ff;
+  box-shadow: inset 0 0 0 1px rgba(34,0,255,.17), 0 7px 24px rgba(34,0,255,.055);
+}
+.flow-node[data-active="true"] .flow-index {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: #fff;
+}
+.flow-node[data-active="true"]::after { background: var(--accent); animation: pipeline-link-glow 1.2s ease-in-out infinite; }
+.flow-node[data-active="true"]::before { border-top-color: var(--accent); }
+.flow-node[data-active="true"] h3 { transition: color 280ms ease; color: var(--accent); }
+.flow[data-cycle-step="3"] .flow-turn::before,
+.flow[data-cycle-step="3"] .flow-turn::after { border-color: var(--accent); }
+.flow[data-cycle-step="3"] .flow-turn i { border-top-color: var(--accent); }
+.flow[data-cycle-step="7"] .flow-return { animation: pipeline-return-glow 1.2s ease-in-out infinite; }
+@keyframes pipeline-link-glow { 0%,100% {opacity:.45} 50% {opacity:1} }
+@keyframes pipeline-return-glow { 0%,100% {opacity:.52} 50% {opacity:1} }
+@media(min-width:1024px) {
+  .flow-node[data-active="true"]::before { border-top-color: transparent; border-left-color: var(--accent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-node, .flow-node[data-active="true"]::after,
+  .flow[data-cycle-step="7"] .flow-return { animation: none !important; }
+  .flow-node { transition: none !important; }
+}

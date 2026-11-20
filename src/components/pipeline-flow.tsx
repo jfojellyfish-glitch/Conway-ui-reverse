@@ -23,14 +23,29 @@ const rows: Step[][] = [
 export function PipelineFlow() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [activeStep, setActiveStep] = useState(-1);
 
   useEffect(() => {
     const el = ref.current;
     if (!el || !("IntersectionObserver" in window)) { setVisible(true); return; }
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); io.disconnect(); } }, { threshold: 0.2 });
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); io.disconnect(); } }, { threshold: 0.06 });
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
+
+  // Continue the 8-stage visual walkthrough once the pipeline enters the viewport.
+  // It is illustrative only: no live strategy executions are implied.
+  useEffect(() => {
+    if (!visible) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (motion.matches) return;
+    setActiveStep(0);
+    const interval = window.setInterval(() => {
+      if (!document.hidden) setActiveStep(i => (i + 1) % 8);
+    }, 1250);
+    return () => window.clearInterval(interval);
+  }, [visible]);
 
   let n = 0, step = 0;
   return <section id="pipeline" className="pipeline page-gutters" aria-labelledby="pipeline-title">
@@ -38,11 +53,11 @@ export function PipelineFlow() {
     <h2 id="pipeline-title">Every idea earns its place<br/><span className="text-accent">or gets cut.</span></h2>
     <p className="systems-lede">One idea, from hypothesis to reallocation. Two gates decide whether it continues.</p>
 
-    <div ref={ref} className="flow" data-visible={visible}>
+    <div ref={ref} className="flow" data-visible={visible} data-cycle-step={activeStep}>
       {rows.map((row, r) => <div key={r} className="flow-block">
         {r > 0 && <div className="flow-turn" aria-hidden="true"><i/></div>}
         <ol className="flow-row">
-          {row.map(s => { const i = n++; const label = s.decision ? "◇" : String(++step).padStart(2, "0"); return <li key={s.title} className={`flow-node${s.decision ? " flow-decision" : ""}`} style={{ "--i": i } as CSSProperties}>
+          {row.map(s => { const i = n++; const label = s.decision ? "◇" : String(++step).padStart(2, "0"); return <li key={s.title} className={`flow-node${s.decision ? " flow-decision" : ""}`} data-active={activeStep === i} style={{ "--i": i } as CSSProperties}>
             <span className="flow-index" aria-hidden="true">{label}</span>
             <h3>{s.title}</h3>
             <p>{s.body}</p>

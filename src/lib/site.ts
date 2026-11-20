@@ -1,9 +1,11 @@
-// Neutral destinations replace company-owned services; no fake authentication/backend.
+/** Existing GSA destinations. Do not claim these are implemented in the new UI. */
 export const links = {
-  contact: "mailto:team@example.com",
-  login: "https://example.com/?destination=login",
-  trust: "https://example.com/?destination=trust",
-  x: "https://example.com/?destination=social-x",
+  contact: "mailto:support@zentradings.com",
+  login: "https://zentradings.com/login",
+  trust: "https://zentradings.com/disclosures",
+  docs: "https://zentradings.com/docs",
+  dashboard: "https://zentradings.com/dashboards/energy",
+  x: "https://x.com/",
   github: "https://github.com/zen-tradings",
-  linkedin: "https://example.com/?destination=social-linkedin",
-};
+  linkedin: "https://www.linkedin.com/company/zen-tradings",
+} as const;

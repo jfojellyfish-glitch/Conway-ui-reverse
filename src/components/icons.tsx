@@ -18,5 +18,8 @@ export function Icon({ name, ...props }: SVGProps<SVGSVGElement> & { name: Name 
 
 /** Neutral wordmark sized to the logo rectangle; text is squeezed to a fixed length. */
 export function Wordmark() {
-  return <svg className="wordmark" viewBox="0 0 162 25" role="img" aria-label="Zen Trading"><rect x="1.5" y="3.5" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5"/><path d="M6 8h9v9H6Z" fill="currentColor"/><text x="29" y="20.5" fill="currentColor" fontFamily="Arial, sans-serif" fontSize="23" letterSpacing="-1" textLength="132" lengthAdjust="spacingAndGlyphs">Zen Trading</text></svg>;
+  return <span className="gsa-wordmark" aria-label="Zen Trading">
+    <span className="gsa-wordmark-icon"><img src="/brand/zen-trading-mark-dark.png" width="52" height="34" alt="" /></span>
+    <span className="gsa-wordmark-text">Zen<span> Trading</span></span>
+  </span>;
 }
