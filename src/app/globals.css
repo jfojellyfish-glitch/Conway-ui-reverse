@@ -838,3 +838,57 @@ body.zen-v-a{--paper:#f7f8f7;--surface:#eef3f1;--surface-soft:#e7efeb;--ink:#1c2
 @media (prefers-reduced-motion: reduce) {
   .hero-centered .hero-copy { animation: none; }
 }
+
+/* V25 — center the entire subscriptions composition as a single responsive unit.
+   The two equal columns and the heading now share the same measure. */
+.subscribe-strip .subscription-layout {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+}
+.subscribe-strip .subscription-layout > .eyebrow { margin: 0; }
+.subscribe-strip .subscription-layout h2 {
+  max-width: 100%;
+  font-size: clamp(34px, 3.4vw, 52px);
+  line-height: 1.1;
+}
+.subscribe-strip .subscription-subtitle {
+  max-width: 610px;
+  margin-top: 18px;
+  font-size: clamp(14px, 1.05vw, 16px);
+}
+.subscribe-strip .subscribe-plans {
+  width: 100%;
+  max-width: none;
+  margin-top: 42px;
+  gap: clamp(16px, 1.7vw, 28px);
+}
+.subscribe-strip .subscribe-plans .subscription-card {
+  min-width: 0;
+  min-height: 260px;
+  padding: 34px clamp(26px, 2.25vw, 40px) 30px;
+  gap: 36px;
+}
+.subscribe-strip .subscription-card .subscription-card-summary {
+  max-width: 48ch;
+  min-height: 0;
+}
+.subscribe-strip .subscription-footnote {
+  max-width: none;
+  margin-top: 22px;
+}
+@media (min-width: 1600px) {
+  .subscribe-strip { padding-block: 108px 102px; }
+  .subscribe-strip .subscribe-plans .subscription-card { min-height: 278px; }
+}
+@media (max-width: 767px) {
+  .subscribe-strip .subscription-layout h2 { font-size: clamp(31px, 7.8vw, 44px); }
+  .subscribe-strip .subscription-subtitle { font-size: 14px; margin-top: 14px; }
+  .subscribe-strip .subscribe-plans { margin-top: 28px; gap: 14px; }
+  .subscribe-strip .subscribe-plans .subscription-card {
+    min-height: 0;
+    padding: 26px 23px 24px;
+    gap: 26px;
+  }
+  .subscribe-strip .subscription-footnote { font-size: 11px; }
+}

@@ -26,6 +26,7 @@ export function Home() {
     <SystemsLoop/>
     <PipelineFlow/>
     <section className="subscribe-strip page-gutters" aria-labelledby="subscribe-title">
+      <div className="subscription-layout">
       <p className="eyebrow">// Subscriptions</p>
       <h2 id="subscribe-title">Use the agents <span className="text-accent">yourself.</span></h2>
       <p className="subscription-subtitle">Quant research tools and market intelligence, on your terms.</p>
@@ -40,7 +41,8 @@ export function Home() {
           <a className="button button-dark" href={plan.checkout} target="_blank" rel="noopener noreferrer" aria-label={`Review ${plan.name} subscription on Stripe`}>Subscribe <Icon name="arrow"/></a>
         </div>
       </li>)}</ul>
-      <p className="subscription-footnote">Checkout is hosted by Stripe. Confirm your final billing amount and renewal terms before subscribing.</p>
+      <p className="subscription-footnote">Checkout is hosted by Stripe. Confirm the amount and renewal terms before subscribing.</p>
+      </div>
     </section>
     <JournalTeaser/>
     </main>
