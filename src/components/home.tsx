@@ -2,7 +2,6 @@ import { SiteShell } from "./site-shell";
 import Link from "next/link";
 import { Icon } from "./icons";
 import { plans } from "@/lib/pricing";
-import { ZenOsDemo } from "./zen-os-demo";
 import { ProcessStrip } from "./process-strip";
 import { SystemsLoop } from "./systems-loop";
 import { PipelineFlow } from "./pipeline-flow";
@@ -12,9 +11,9 @@ import { JournalTeaser } from "./zen-bridge";
 export function Home() {
   return <SiteShell home>
     <main id="main" className="home-main" tabIndex={-1}>
-    <div className="hero page-gutters">
+    <section className="hero hero-centered page-gutters" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <h1>Research built<br/>to be<br/><span className="text-accent">verified.</span></h1>
+        <h1 id="hero-title">Research built<br/>to be<br/><span className="text-accent">verified.</span></h1>
         <p className="hero-description">Sourced claims.<br/>Costed research.<br/>Measured returns.</p>
         <div className="hero-actions flex flex-wrap items-center gap-2.5">
           <Link className="button button-primary" href="/pricing">Explore plans<Icon name="right"/></Link>
@@ -22,8 +21,7 @@ export function Home() {
           <a className="button button-outline" href={links.github} target="_blank" rel="noopener noreferrer">View GitHub<Icon name="arrow"/></a>
         </div>
       </div>
-      <ZenOsDemo/>
-    </div>
+    </section>
     <ProcessStrip/>
     <SystemsLoop/>
     <PipelineFlow/>

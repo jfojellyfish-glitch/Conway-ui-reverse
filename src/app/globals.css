@@ -501,7 +501,7 @@ body.zen-v-a{--paper:#f7f8f7;--surface:#eef3f1;--surface-soft:#e7efeb;--ink:#1c2
 .gsa-wordmark{display:inline-flex;align-items:center;gap:9px;white-space:nowrap;color:var(--ink);font-family:"Space Grotesk",Arial,sans-serif;font-size:20px;font-weight:600;line-height:1;letter-spacing:-.01em}
 .gsa-wordmark-icon{display:inline-flex;width:52px;height:34px;align-items:center;flex-shrink:0}
 .gsa-wordmark-icon img{display:block;width:52px;height:34px;object-fit:contain}
-.gsa-wordmark-text>span{color:#3c9c91}
+.gsa-wordmark-text>span{color:var(--accent)}
 .full-footer .gsa-wordmark{font-size:24px}
 .full-footer .gsa-wordmark-icon,.full-footer .gsa-wordmark-icon img{width:59px;height:39px}
 .gsa-footer-caption{font-size:10px;color:var(--muted);letter-spacing:.03em}
@@ -514,7 +514,7 @@ body.zen-v-a{--paper:#f7f8f7;--surface:#eef3f1;--surface-soft:#e7efeb;--ink:#1c2
 @media(max-width:480px){.gsa-wordmark{font-size:18px;gap:7px}.gsa-wordmark-icon,.gsa-wordmark-icon img{width:45px;height:30px}}
 
 /* Faithful variant: keep Conway pale editorial palette and blue accents intact. */
-.gsa-wordmark-text>span{color:#3c9c91}
+.gsa-wordmark-text>span{color:var(--accent)}
 
 
 /* P1 Zen OS demo replaces only the P2 hero artwork. Drawn entirely in CSS/HTML. */
@@ -778,4 +778,61 @@ body.zen-v-a{--paper:#f7f8f7;--surface:#eef3f1;--surface-soft:#e7efeb;--ink:#1c2
   .loop-motion-ring, .stage-card::after { animation: none !important; }
   .loop-orbit-beacon { transition: none !important; }
   .flow-node { transition: none !important; }
+}
+
+/* V23 — single centered hero after retiring the scripted terminal display.
+   Reuse the exact site blue, RGB(34,0,255), and the existing sans-serif family. */
+.gsa-wordmark-text > span { color: var(--accent); }
+.home-main > .hero.hero-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  min-height: calc(100svh - 72px);
+  padding-block: clamp(68px, 9vh, 128px);
+  gap: 0;
+  text-align: center;
+}
+.hero-centered .hero-copy {
+  width: min(100%, 1140px);
+  max-width: none;
+  margin-inline: auto;
+}
+.hero-centered h1 {
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(48px, 7.3vw, 108px);
+  font-weight: 300;
+  letter-spacing: -.05em;
+  line-height: 1.055;
+}
+.hero-centered .hero-description {
+  width: 100%;
+  max-width: none;
+  margin: clamp(22px, 3.5vh, 35px) auto 0;
+  font-size: clamp(16px, 1.4vw, 18px);
+  line-height: 1.55;
+}
+.hero-centered .hero-actions {
+  justify-content: center;
+  margin-top: clamp(28px, 4.5vh, 42px);
+  gap: 12px;
+}
+.hero-centered .hero-actions .button { font-size: 13px; padding: 12px 19px; line-height: 20px; }
+@media (max-width: 767px) {
+  .home-main > .hero.hero-centered { padding-inline: 22px; padding-block: 60px; }
+  .hero-centered h1 { font-size: clamp(42px, 11.7vw, 65px); letter-spacing: -.047em; line-height: 1.08; }
+  .hero-centered .hero-description { font-size: 16px; margin-top: 25px; }
+  .hero-centered .hero-actions { margin-top: 29px; gap: 9px; }
+  .hero-centered .hero-actions .button { padding: 11px 14px; font-size: 12px; }
+}
+@media (max-width: 355px) {
+  .hero-centered h1 { font-size: 40px; }
+  .hero-centered .hero-actions .button { font-size: 11px; padding-inline: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-centered .hero-copy { animation: none; }
 }
