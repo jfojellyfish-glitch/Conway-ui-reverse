@@ -711,3 +711,71 @@ body.zen-v-a{--paper:#f7f8f7;--surface:#eef3f1;--surface-soft:#e7efeb;--ink:#1c2
 /* Ensure subscription amounts override legacy generic span styling. */
 .subscribe-plans .subscription-card-price .subscription-price-amount{font-size:clamp(27px,2.7vw,34px);font-weight:400;line-height:1;letter-spacing:-.045em;color:var(--ink)}
 .subscribe-plans .subscription-card-price .subscription-price-unit{font-size:12px;color:var(--muted)}
+
+
+/* V22 — subtle, guided motion for Our Systems and Pipeline; no changes to their layouts. */
+.loop-motion-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 17;
+  opacity: .23;
+  animation: loop-trace-flow 16s linear infinite;
+}
+.loop-progress { stroke-linecap: round; stroke-width: 2; }
+.loop-orbit-beacon { transition: transform 1000ms cubic-bezier(.22,.68,.2,1); }
+.loop-beacon-halo { fill: var(--accent); opacity: .095; }
+.loop-beacon-dot { fill: var(--accent); }
+.loop-node[aria-selected="true"] .loop-dot { box-shadow: 0 0 0 5px rgba(34,0,255,.07); }
+.stage-card::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: calc(100% + 2px);
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: stage-time-trace 6s linear forwards;
+  pointer-events: none;
+}
+.stage-card::before { background: rgba(34,0,255,.17); }
+.systems-grid[data-motion-active="false"] .loop-motion-ring,
+.systems-grid[data-motion-active="false"] .stage-card::after { animation-play-state: paused; }
+.systems-grid[data-motion-active="false"] .loop-orbit-beacon { transition-duration: 0s; }
+@keyframes loop-trace-flow { to { stroke-dashoffset: -171; } }
+@keyframes stage-time-trace { to { transform: scaleX(1); } }
+
+.flow-node {
+  transition-property: opacity, transform, border-color, background-color, box-shadow;
+  transition-duration: 450ms, 450ms, 470ms, 470ms, 470ms;
+  transition-timing-function: ease-out, ease-out, ease, ease, ease;
+  transition-delay: calc(var(--i) * 90ms), calc(var(--i) * 90ms), 0ms, 0ms, 0ms;
+}
+.flow-node::before { transition: border-color 400ms ease; }
+.flow-node::after { transition: background-color 400ms ease; }
+.flow-node[data-active="true"] {
+  background: #f8f7ff !important;
+  border-color: var(--accent);
+  box-shadow: inset 0 2px 0 var(--accent), 0 0 0 1px rgba(34,0,255,.05);
+}
+.flow-node[data-active="true"] .flow-index:not(.unused) {
+  border-color: var(--accent);
+  color: var(--accent);
+  transition: border-color 400ms ease, color 400ms ease;
+}
+.flow-decision[data-active="true"] .flow-index { background: var(--accent); color: var(--paper); }
+.flow-node[data-active="true"]::after { background: var(--accent); }
+.flow-node[data-active="true"]::before { border-top-color: var(--accent); }
+.flow[data-cycle-step="3"] .flow-turn::before,
+.flow[data-cycle-step="3"] .flow-turn::after { border-color: var(--accent); }
+.flow[data-cycle-step="3"] .flow-turn i { border-top-color: var(--accent); }
+@media (min-width:1024px) {
+  .flow-node[data-active="true"]::before { border-top-color: transparent; border-left-color: var(--accent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loop-motion-ring, .stage-card::after { animation: none !important; }
+  .loop-orbit-beacon { transition: none !important; }
+  .flow-node { transition: none !important; }
+}

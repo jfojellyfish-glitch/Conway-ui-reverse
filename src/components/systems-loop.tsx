@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "./icons";
 import { links } from "@/lib/site";
 
@@ -31,15 +31,37 @@ const R = 150, C = 2 * Math.PI * R;
 const nodes = [[200, 50], [350, 200], [200, 350], [50, 200]] as const;
 
 export function SystemsLoop() {
-  const [active, setActive] = useState(0);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
   const [hold, setHold] = useState(false);
+  // Absolute angle prevents the marker from spinning backwards on 04 → 01.
+  const [selection, setSelection] = useState({ active: 0, angle: 0 });
+  const active = selection.active;
 
   useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (hold || reduce) return;
-    const id = window.setTimeout(() => setActive(i => (i + 1) % stages.length), 6000);
+    const el = gridRef.current;
+    if (!el || !("IntersectionObserver" in window)) { setInView(true); return; }
+    const observer = new IntersectionObserver(([entry]) => {
+      setInView(entry.isIntersecting);
+    }, { threshold: 0.08 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!inView || hold || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setTimeout(() => {
+      setSelection(previous => ({ active: (previous.active + 1) % stages.length, angle: previous.angle + 90 }));
+    }, 6000);
     return () => window.clearTimeout(id);
-  }, [active, hold]);
+  }, [active, inView, hold]);
+
+  const selectStage = (index: number) => {
+    setSelection(previous => ({
+      active: index,
+      angle: previous.angle + ((index - previous.active + stages.length) % stages.length) * 90,
+    }));
+  };
 
   const stage = stages[active];
   const n = String(active + 1).padStart(2, "0");
@@ -49,12 +71,17 @@ export function SystemsLoop() {
     <h2 id="systems-title">A feedback loop<br/>that keeps research costs<br/><span className="text-accent">below strategy returns.</span></h2>
     <p className="systems-lede">Research → deploy → measure → steer. Then again.</p>
 
-    <div className="systems-grid" onMouseEnter={() => setHold(true)} onMouseLeave={() => setHold(false)} onFocus={() => setHold(true)} onBlur={() => setHold(false)}>
+    <div ref={gridRef} className="systems-grid" data-motion-active={inView && !hold} onMouseEnter={() => setHold(true)} onMouseLeave={() => setHold(false)} onFocus={() => setHold(true)} onBlur={() => setHold(false)}>
       <div className="loop">
         <svg className="loop-ring" viewBox="0 0 400 400" aria-hidden="true">
           <circle cx="200" cy="200" r={R} className="loop-track"/>
+          <circle cx="200" cy="200" r={R} className="loop-motion-ring"/>
           <circle cx="200" cy="200" r={R} className="loop-progress" strokeDasharray={C} strokeDashoffset={C * (1 - active / stages.length)} transform="rotate(-90 200 200)"/>
           <circle cx="200" cy="200" r="86" className="loop-core"/>
+          <g className="loop-orbit-beacon" style={{ transform: `rotate(${selection.angle}deg)`, transformOrigin: "200px 200px" }}>
+            <circle cx="200" cy="50" r="11" className="loop-beacon-halo"/>
+            <circle cx="200" cy="50" r="4" className="loop-beacon-dot"/>
+          </g>
         </svg>
         <div className="loop-center" aria-live="polite">
           <strong>Cost vs<br/>Return</strong>
@@ -62,7 +89,7 @@ export function SystemsLoop() {
         </div>
         <div role="tablist" aria-label="Loop stages">
           {stages.map((s, i) => <button key={s.label} role="tab" id={`stage-tab-${i}`} aria-selected={i === active} aria-controls="stage-panel"
-            className={`loop-node loop-node-${i}`} style={{ left: `${nodes[i][0] / 4}%`, top: `${nodes[i][1] / 4}%` }} onClick={() => setActive(i)}>
+            className={`loop-node loop-node-${i}`} style={{ left: `${nodes[i][0] / 4}%`, top: `${nodes[i][1] / 4}%` }} onClick={() => selectStage(i)}>
             <span className="loop-dot">{String(i + 1).padStart(2, "0")}</span><span className="loop-label">{s.label}</span>
           </button>)}
         </div>
