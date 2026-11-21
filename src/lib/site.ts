@@ -1,7 +1,7 @@
 /** Existing GSA destinations. Do not claim these are implemented in the new UI. */
 export const links = {
   contact: "mailto:support@zentradings.com",
-  login: "https://zentradings.com/login",
+  login: "/login",
   trust: "https://zentradings.com/disclosures",
   docs: "https://zentradings.com/docs",
   dashboard: "https://zentradings.com/dashboards/energy",
