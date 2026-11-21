@@ -978,3 +978,37 @@ body.zen-v-a{--paper:#f7f8f7;--surface:#eef3f1;--surface-soft:#e7efeb;--ink:#1c2
   .mobile-links a { padding-block: 5px; font-size: clamp(26px, 8vw, 32px); }
   .mobile-menu-footer { margin-top: 24px; }
 }
+
+/* Landing page typography only — three consistent content tiers.
+   Keep the existing hero display type, logo, navigation, code/UI labels and layouts. */
+.home-shell {
+  --landing-section-type: clamp(34px, 3.5vw, 52px);
+  --landing-card-type: clamp(22px, 2.05vw, 28px);
+  --landing-body-type: clamp(15px, 1.15vw, 17px);
+}
+
+/* Tier 1: section headings. */
+.home-shell .systems h2,
+.home-shell .pipeline h2,
+.home-shell .subscribe-strip .subscription-layout h2,
+.home-shell .zen-journal-teaser h2 {
+  font-size: var(--landing-section-type);
+}
+
+/* Tier 2: feature and subscription card headings. */
+.home-shell .stage-card h3,
+.home-shell .flow-node h3,
+.home-shell .subscribe-plans .subscription-card h3 {
+  font-size: var(--landing-card-type);
+}
+
+/* Tier 3: supporting copy across sections and cards. */
+.home-shell .systems-lede,
+.home-shell .stage-body,
+.home-shell .flow-node p,
+.home-shell .systems-outro,
+.home-shell .subscription-subtitle,
+.home-shell .subscribe-plans .subscription-card .subscription-card-summary,
+.home-shell .zen-journal-teaser p {
+  font-size: var(--landing-body-type);
+}
