@@ -5,7 +5,7 @@ import { terminalSessions, terminalFootnote, type TerminalStep } from "@/lib/ter
 
 // This is the original GSA scripted demonstration, presented inside the Conway layout.
 // It never reads local files or executes commands: all tool results are illustrative.
-const spinnerFrames = ["·", "✢", "✳︎", "✶", "✻", "✽", "✻", "✶", "✳︎", "✢"];
+const spinnerFrames = ["→", "↗", "↑", "↖", "←", "↙", "↓", "↘"];
 const escapeHtml = (text: string) => text
   .replace(/&/g, "&amp;")
   .replace(/</g, "&lt;")
@@ -79,7 +79,7 @@ export function ZenOsDemo() {
           break;
         case "think": {
           const seconds = await spinner(step.verb || "Thinking", step.ms || 2000);
-          commit(`<span class="t-dim">✻ ${escapeHtml(step.verb || "Thought")} for ${seconds}s</span>`);
+          commit(`<span class="t-dim">→ ${escapeHtml(step.verb || "Thought")} for ${seconds}s</span>`);
           await sleep(250);
           break;
         }
@@ -87,7 +87,7 @@ export function ZenOsDemo() {
           let msg = "";
           for (const word of step.text.split(" ")) {
             msg += (msg ? " " : "") + word;
-            live = `<span class="t-accent">⏺︎</span> ${escapeHtml(msg)}`;
+            live = `<span class="t-accent">→</span> ${escapeHtml(msg)}`;
             paint(true);
             await sleep(jitter(70, 90));
           }
@@ -106,7 +106,7 @@ export function ZenOsDemo() {
               await sleep(110);
             }
           }
-          commit(`<span class="t-ok">⏺︎</span> ${head}`);
+          commit(`<span class="t-ok">→</span> ${head}`);
           for (let i = 0; i < (step.out || []).length; i++) {
             commit(`  <span class="t-dim">${i === 0 ? "⎿" : " "} ${escapeHtml(step.out![i])}</span>`);
             await sleep(260);
@@ -116,7 +116,7 @@ export function ZenOsDemo() {
           break;
         }
         case "diff":
-          commit(`<span class="t-ok">⏺︎</span> <span class="t-tool">Edit</span>(<span class="t-arg">${escapeHtml(step.file)}</span>)`);
+          commit(`<span class="t-ok">→</span> <span class="t-tool">Edit</span>(<span class="t-arg">${escapeHtml(step.file)}</span>)`);
           for (const line of step.lines) {
             const cls = line.startsWith("+") ? "t-add" : line.startsWith("-") ? "t-del" : "t-dim";
             await sleep(420);
@@ -136,7 +136,7 @@ export function ZenOsDemo() {
         for (let index = 0; active; index = (index + 1) % terminalSessions.length) {
           const session = terminalSessions[index];
           lines = [
-            `<span class="t-accent">✻</span> <span class="t-strong">zen-coding</span> <span class="t-dim">· ~/${escapeHtml(session.title)}</span>`,
+            `<span class="t-accent">→</span> <span class="t-strong">zen-coding</span> <span class="t-dim">· ~/${escapeHtml(session.title)}</span>`,
             "",
           ];
           live = "";
@@ -163,7 +163,7 @@ export function ZenOsDemo() {
       <div className="zen-os-window">
         <div className="zen-os-titlebar"><span>ZEN OS</span><span className="zen-os-title-soft">DEMO</span></div>
         <pre ref={output} className="zen-os-body zen-os-output" aria-hidden="true" suppressHydrationWarning>
-          {"✻ zen-coding · ~/quant/review\n\n> review ./strategies/momentum.py for lookahead bias\n\n✻ Reading for 2s\n⏺︎ Read(strategies/momentum.py)\n  ⎿ 142 lines\n\n✢ Grep(\"shift\\(|rolling\\(\" strategies/)\n  ⎿ running…"}
+          {"→ zen-coding · ~/quant/review\n\n> review ./strategies/momentum.py for lookahead bias\n\n→ Reading for 2s\n→ Read(strategies/momentum.py)\n  ⎿ 142 lines\n\n→ Grep(\"shift\\(|rolling\\(\" strategies/)\n  ⎿ running…"}
         </pre>
         <button ref={expandButton} type="button" className="zen-os-expand" onClick={() => setExpanded(!expanded)} aria-label={expanded ? "Close enlarged demo" : "Enlarge Zen OS demo"} aria-pressed={expanded} title={expanded ? "Close demo (Esc)" : "Expand demo"}>
           {expanded
