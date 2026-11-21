@@ -8,11 +8,6 @@ import "./conway-login.css";
 export const metadata: Metadata = {
   title: "Log In — Zen Trading",
   description: "Sign in to access Zen Trading research.",
-  icons: {
-    icon: [{ url: "/login/icon.png?v=zen-official-20261121", type: "image/png", sizes: "64x64" }],
-    shortcut: "/login/icon.png?v=zen-official-20261121",
-    apple: "/apple-icon.png?v=zen-official-20261121",
-  },
 };
 
 export default function LoginPage() {
