@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Zen Trading — Research Built to Be Verified",
   description: "Zen Trading research systems, transparent workflows and quant tools.",
+  icons: {
+    icon: [{ url: "/brand/zen-trading-tab-20261121.png", type: "image/png", sizes: "64x64" }],
+    shortcut: "/brand/zen-trading-tab-20261121.png",
+  },
 };
 export const viewport: Viewport = { themeColor: "#f7f6f5" };
 
