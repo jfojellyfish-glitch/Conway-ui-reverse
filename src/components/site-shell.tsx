@@ -78,7 +78,6 @@ export function SiteHeader() {
           <a href={links.contact} onClick={() => setOpen(false)}>Contact</a>
           <a href={links.login}>Log In</a>
         </nav>
-        <div className="menu-credits"><Credits/></div>
       </div>
     </dialog>
   </>;

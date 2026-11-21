@@ -107,8 +107,6 @@ html:has(.home-shell) { scroll-behavior: smooth; }
 .mobile-links a:nth-child(4) { animation-delay: 150ms; }
 .mobile-links a:nth-child(5) { animation-delay: 200ms; }
 .mobile-links a:hover { opacity: .6; }
-.menu-credits { margin-top: auto; padding-top: 40px; }
-.menu-credits .credits { column-gap: 20px; }
 
 /* Pricing page: two monthly subscription plans, reusing stage-card and tag styles. */
 .pricing-main { flex: 1; padding-top: 48px; padding-bottom: 96px; }
@@ -891,4 +889,10 @@ body.zen-v-a{--paper:#f7f8f7;--surface:#eef3f1;--surface-soft:#e7efeb;--ink:#1c2
     gap: 26px;
   }
   .subscribe-strip .subscription-footnote { font-size: 11px; }
+}
+
+/* On small screens, let copyright use its natural width and wrap footer items without collision. */
+@media (max-width: 767px) {
+  .site-footer .copyright { width: auto; }
+  .site-footer .credits { row-gap: 12px; column-gap: 16px; }
 }
