@@ -76,8 +76,11 @@ export function SiteHeader() {
           <Link href="/blog" onClick={() => setOpen(false)}>Blog</Link>
           <Link href="/careers" onClick={() => setOpen(false)}>Careers</Link>
           <a href={links.contact} onClick={() => setOpen(false)}>Contact</a>
-          <a href={links.login}>Log In</a>
+          <a href={links.login} onClick={() => setOpen(false)}>Log In</a>
         </nav>
+        <footer className="mobile-menu-footer" aria-label="Mobile navigation footer">
+          <Credits />
+        </footer>
       </div>
     </dialog>
   </>;
